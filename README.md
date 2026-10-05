@@ -21,7 +21,7 @@ O banco de dados foi modelado para suportar permissões baseadas em funções (R
 - **Funnel Stages:** Etapas de personalizáveis do funil de vendas.
 - **Custtomers:**  Clientes cadastrados e vinculados a etapas do funil responsáveis.
 - **Customer Notes:** Histórico e obersvações registradas para cada cliente.
-- **Tasks:** Tarefas com prioridades, datas de vencimento e statusaos clientes.
+- **Tasks:** Tarefas com prioridades, datas de vencimento e status aos clientes.
 
 ---
 
