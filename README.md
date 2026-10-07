@@ -36,5 +36,26 @@ O banco de dados foi modelado para suportar permissões baseadas em funções (R
 
 (... em construção!)
 
-Data ultima atualização 01/10/2026.
+## Autenticação e Segurança
 
+A API utiliza uma arquiterura de segurança **Stateless** implementada com **Spring Boot**  e tokens **JWT (JSON Web Token)**, garantindo o controle de acesso granular baseado em funções (RBAC - Role-Based Access Control).
+
+- **Criptografia de Senhas:** BCrypt(`BCryptPasswordEncoder`).
+- **Autenticação Stateless:** Validação de tokens JWT em cada requisição através de filtro customizado (`JwtAuthenticaftionFilter`).
+- **Provedor de Tokens:** Módulo dedicado (`JwtTokenProvider`) para geração, extração claims e validação de expiração e assinatura.
+- **DTOs Validados:** `LoginRequest` e `TokenResponse` utilizando `jakarta.validation` para garantia de integridade dos dados de entrada.
+
+---
+
+## Status do Projeto (Data: 06/10/2026)
+
+- [x] Modelagem do Banco de Dados (DER)
+- [x] Scripts DDL e Seed Iniciais via Flyway
+- [x] Configuração Docker Compose & Spring Boot (Java 21)
+- [x] Mapeamento das Entidades JPA (`User`,`Role`, `Customer`, etc.)
+- [x] Repositórios Spring Data JPA (`JpaRepository`)
+- [x] Infraestrutura de Autenticação JWT (`JwtTokenProvider`, Dtos de Auth)
+- [ ] Configuração e Filtros do Spring Security (`SecurityConfig` e `JwtAuthenticationFilter`)
+- [ ] Endpoint de Autenticação (`/api/v1/auth/login`)
+- [ ] Endpoint RESTful (CRUDs e Dashboard)
+- [ ] Integração com Frontend (React/TypeScript)
