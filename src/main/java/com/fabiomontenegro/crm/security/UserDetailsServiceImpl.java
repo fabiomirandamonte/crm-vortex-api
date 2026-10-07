@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service 
 public class UserDetailsServiceImpl implements UserDetailsService {
     
+    
     private final UserRepository userRepository;
 
     public UserDetailsServiceImpl(UserRepository userRepository){
@@ -19,8 +20,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        return userRepository.findByEmail(email)
-                .map(CustomUserDetails::new)
+        var user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado com o e-mail: " + email));
+
+        System.out.println("==================================================");
+        System.out.println(">>> EMAIL ENCONTRADO: " + user.getEmail());
+        System.out.println(">>> HASH RETORNADO DA BD: " + user.getPassword());
+        System.out.println("==================================================");
+
+        return new CustomUserDetails(user);
     }
 }

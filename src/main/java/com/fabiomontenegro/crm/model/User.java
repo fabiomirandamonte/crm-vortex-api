@@ -47,6 +47,7 @@ public class User {
         this.updatedAt = OffsetDateTime.now();
     }
 
+
     @PreUpdate
     protected void onUpdate() {
         this.updatedAt = OffsetDateTime.now();
