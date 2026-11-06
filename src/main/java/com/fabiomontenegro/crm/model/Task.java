@@ -6,6 +6,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.OffsetDateTime;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 @Entity
 @Table(name = "tasks")
 @Getter
@@ -30,12 +33,14 @@ public class Task {
     private OffsetDateTime dueDate;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(columnDefinition = "task_status", nullable = false)
     @Builder.Default
     private TaskStatus status = TaskStatus.PENDING;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(columnDefinition = "task_priority", nullable = false)
     @Builder.Default
     private TaskPriority priority = TaskPriority.MEDIUM;
 

@@ -33,8 +33,11 @@ O banco de dados foi modelado para suportar permissões baseadas em funções (R
 - **Maven** (ou utilizar o wrapper `./mvnw`)
 
 ### Passo para execução
+1. Suba o container do banco de dados (se aplicável via Docker Compose):
+             docker-compose up -d
 
-(... em construção!)
+2. Execute a aplicação Spring Boot:
+             ./mvnw spring-boot:run
 
 ## Autenticação e Segurança
 
@@ -55,7 +58,9 @@ A API utiliza uma arquiterura de segurança **Stateless** implementada com **Spr
 - [x] Mapeamento das Entidades JPA (`User`,`Role`, `Customer`, etc.)
 - [x] Repositórios Spring Data JPA (`JpaRepository`)
 - [x] Infraestrutura de Autenticação JWT (`JwtTokenProvider`, Dtos de Auth)
-- [ ] Configuração e Filtros do Spring Security (`SecurityConfig` e `JwtAuthenticationFilter`)
-- [ ] Endpoint de Autenticação (`/api/v1/auth/login`)
+- [x] Configuração e Filtros do Spring Security (`SecurityConfig` e `JwtAuthenticationFilter`)
+- [x] Endpoint de Autenticação (`/api/v1/auth/login`) com suporte a BCrypt.+
+- [x] Mapeamento de Enums Nativos do PostgreSQL (task_status, task_priority) via Hibernate (@JdbcTypeCode(SqlTypes.NAMED_ENUM))
+- [x] Módulo de Tarefas (Tasks) - Criação vinculada ao usuário autenticado e clientes
 - [ ] Endpoint RESTful (CRUDs e Dashboard)
 - [ ] Integração com Frontend (React/TypeScript)
