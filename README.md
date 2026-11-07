@@ -64,3 +64,13 @@ A API utiliza uma arquiterura de segurança **Stateless** implementada com **Spr
 - [x] Módulo de Tarefas (Tasks) - Criação vinculada ao usuário autenticado e clientes
 - [ ] Endpoint RESTful (CRUDs e Dashboard)
 - [ ] Integração com Frontend (React/TypeScript)
+
+
+Data 06/11/2026 às 16:09
+Próximas Demandas (Sequência do Projeto):
+
+Módulo de Clientes (Customers): Desenvolver e validar o CRUD completo de clientes, garantindo a integração correta com as entidades do sistema.
+
+Gerenciamento de Estágios do Funil (Funnel Stages): Criar os endpoints para movimentação e controle do pipeline de vendas dos clientes.
+
+Notas de Clientes (Customer Notes): Implementar o histórico de anotações e interações para fechar o ciclo de acompanhamento.
