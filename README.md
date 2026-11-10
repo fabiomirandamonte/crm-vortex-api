@@ -86,7 +86,10 @@ A API utiliza uma arquiterura de segurança **Stateless** implementada com **Spr
 - [x] Endpoint de Autenticação (`/api/v1/auth/login`) com suporte a BCrypt.+
 - [x] Mapeamento de Enums Nativos do PostgreSQL (task_status, task_priority) via Hibernate (@JdbcTypeCode(SqlTypes.NAMED_ENUM))
 - [x] Módulo de Tarefas (Tasks) - Criação vinculada ao usuário autenticado e clientes
-- [ ] Endpoint RESTful (CRUDs e Dashboard)
+- [x] Módulo de Clientes (Customers) - CRUD completo implementado e validado
+- [x] Módulo de Estágios do Funil (Funnel Stages) - Gestão do pipeline ordenada por `stageOrder`
+- [x] Notas de Clientes (Customer Notes) - Histórico de interações com CRUD completo e paginação
+- [ ] Unificação das Regras do Pipeline (Vinculação de Clientes aos Estágios)
 - [ ] Integração com Frontend (React/TypeScript)
 
 
