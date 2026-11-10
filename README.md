@@ -1,5 +1,29 @@
 # 🏢 CRM Interno - API REST
 
+###
+Desenvolvimento de CRM interno para empresa
+
+Descrição do Projeto:
+
+Busco desenvolvedor fullstack para criação de um CRM/painel administrativo interno para minha empresa.
+
+O objetivo é centralizar e organizar processos da operação em um único sistema, com uma interface simples, moderna e de fácil utilização.
+
+Principais funcionalidades:
+
+Login e controle de usuários/permissões;
+Dashboard com indicadores;
+Cadastro e gerenciamento de clientes;
+Funil/status dos clientes;
+Tarefas, responsáveis e prazos;
+Histórico e observações;
+Busca e filtros;
+Relatórios básicos.
+
+
+O sistema deve possuir frontend, backend e banco de dados, além de ser responsivo e preparado para receber novos módulos e integrações futuramente.
+
+
 API RESTful para sistema de CRM e painel administrativo interno, desenvolvido para centralizar e gerenciar clientes, funil de vendas, tarefas e permissões de acesso.
 
 ## Tecnologias Utilizadas
