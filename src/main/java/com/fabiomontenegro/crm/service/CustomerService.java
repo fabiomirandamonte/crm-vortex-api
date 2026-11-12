@@ -99,4 +99,18 @@ public class CustomerService {
         }
         customerRepository.deleteById(id);
     }
+
+    @Transactional 
+    public CustomerResponse updateFunnelStage(Long customerId, Long newStageId) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() -> new ResourceNotFoundException("Cliente não encontrado com o ID: " + customerId));
+        
+        FunnelStage newStage = funnelStageRepository.findById(newStageId)
+                .orElseThrow(() -> new ResourceNotFoundException("Estágio do funil não encontrado com ID: " + newStageId));
+        
+        customer.setFunnelStage(newStage);
+        Customer updatedCustomer = customerRepository.save(customer);
+
+        return CustomerResponse.fromEntity(updatedCustomer);
+    }
 }
