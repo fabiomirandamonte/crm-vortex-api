@@ -56,4 +56,15 @@ public class CustomerController {
         customerService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PatchMapping("/{id}/funnel-stage")
+    public ResponseEntity<CustomerResponse> updateFunnelStage(
+            @PathVariable Long id, 
+            @RequestParam Long stageId) {
+        
+        CustomerResponse response = customerService.updateFunnelStage(id, stageId);
+        
+        return ResponseEntity.ok(response);
+    }
+    
 }
