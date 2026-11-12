@@ -74,7 +74,7 @@ A API utiliza uma arquiterura de segurança **Stateless** implementada com **Spr
 
 ---
 
-## Status do Projeto (Data: 06/10/2026)
+## Status do Projeto (Data: 12/11/2026)
 
 - [x] Modelagem do Banco de Dados (DER)
 - [x] Scripts DDL e Seed Iniciais via Flyway
@@ -86,7 +86,7 @@ A API utiliza uma arquiterura de segurança **Stateless** implementada com **Spr
 - [x] Endpoint de Autenticação (`/api/v1/auth/login`) com suporte a BCrypt.+
 - [x] Mapeamento de Enums Nativos do PostgreSQL (task_status, task_priority) via Hibernate (@JdbcTypeCode(SqlTypes.NAMED_ENUM))
 - [x] Módulo de Tarefas (Tasks) - Criação vinculada ao usuário autenticado e clientes
-- [ ] Endpoint RESTful (CRUDs e Dashboard)
+- [x] Endpoint RESTful (CRUDs e Dashboard)
 - [ ] Integração com Frontend (React/TypeScript)
 
 
