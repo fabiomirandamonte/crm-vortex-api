@@ -4,6 +4,11 @@ export interface FunnelStage {
   stageOrder: number;
 }
 
+export interface FunnelStageRequest {
+  name: string;
+  stageOrder: number;
+}
+
 export interface Customer {
   id: number;
   name: string;

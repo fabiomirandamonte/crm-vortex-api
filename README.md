@@ -111,7 +111,7 @@ A interface web estará disponível em `http://localhost:5173`.
 - [x] Tela de Login responsiva e fluxo de autenticação JWT (`AuthContext` + rotas protegidas)
 - [x] Layout base com navegação modular (`TopNavBar`)
 - [x] Interface de Gestão de Clientes (`CustomersPage`): listagem, busca/filtros dinâmicos, cadastro, edição, exclusão e atualização inline de estágio do funil (`PATCH /api/v1/customers/{id}/funnel-stage`)
-- [ ] Interface de gerenciamento de Estágios do Funil (`Funnel Stages UI`)
+- [x] Interface de gerenciamento de Estágios do Funil (`Funnel Stages UI`)
 - [ ] Interface de Tarefas (`Tasks UI`)
 - [ ] Interface de Histórico e Anotações (`Notes UI`)
 - [ ] Painel Administrativo (`Admin UI`) e Dashboard de indicadores
