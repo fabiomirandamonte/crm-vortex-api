@@ -5,7 +5,6 @@ import com.fabiomontenegro.crm.dto.FunnelStageResponse;
 import com.fabiomontenegro.crm.exception.ResourceNotFoundException;
 import com.fabiomontenegro.crm.model.FunnelStage;
 import com.fabiomontenegro.crm.repository.FunnelStageRepository;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -65,6 +64,6 @@ public class FunnelStageService {
         if (!funnelStageRepository.existsById(id)){
             throw new ResourceNotFoundException("Estágio do funil não encontrado com o ID: " + id);
         }
-        funnelStageRepository.deleteAllById(null);
+        funnelStageRepository.deleteById(id);
     }
 }
