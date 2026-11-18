@@ -66,3 +66,25 @@ export interface TaskRequest {
   customerId: number;
   assignedUserId: number;
 }
+
+export interface CustomerNote {
+  id: number;
+  content: string;
+  customerId?: number;
+  customer?: {
+    id: number;
+    name: string;
+  };
+  author?: {
+    id: number;
+    name?: string;
+    email?: string;
+  };
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+export interface CustomerNoteRequest {
+  content: string;
+  customerId: number;
+}

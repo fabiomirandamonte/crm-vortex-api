@@ -5,6 +5,7 @@ import { LoginPage } from './pages/auth/LoginPage';
 import { CustomersPage } from './pages/customers/CustomerPage';
 import { FunnelStagesPage } from './pages/funnel/FunnelStagesPage';
 import { TasksPage } from './pages/tasks/TasksPage';
+import { CustomerNotesPage } from './pages/notes/CustomerNotesPage';
 
 export function App() {
   return (
@@ -36,6 +37,15 @@ export function App() {
             element={
               <ProtectedRoute>
                 <TasksPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route 
+            path="/notes"
+            element={
+              <ProtectedRoute>
+                <CustomerNotesPage />
               </ProtectedRoute>
             }
           />
