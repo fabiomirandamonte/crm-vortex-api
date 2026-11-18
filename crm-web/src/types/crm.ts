@@ -88,3 +88,21 @@ export interface CustomerNoteRequest {
   content: string;
   customerId: number;
 }
+
+export type UserRole = 'ADMIN' | 'USER';
+
+export interface SystemUser {
+  id: number;
+  name: string;
+  email: string;
+  role: UserRole;
+  active?: boolean;
+  createdAt?: string;
+}
+
+export interface SystemUserRequest {
+  name: string;
+  email: string;
+  password?: string;
+  role: UserRole;
+}
