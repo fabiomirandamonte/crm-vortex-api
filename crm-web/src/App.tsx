@@ -4,6 +4,7 @@ import { ProtectedRoute } from './components/layout/ProtectedRoute';
 import { LoginPage } from './pages/auth/LoginPage';
 import { CustomersPage } from './pages/customers/CustomerPage';
 import { FunnelStagesPage } from './pages/funnel/FunnelStagesPage';
+import { TasksPage } from './pages/tasks/TasksPage';
 
 export function App() {
   return (
@@ -26,6 +27,15 @@ export function App() {
             element={
               <ProtectedRoute>
                 <FunnelStagesPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/tasks"
+            element={
+              <ProtectedRoute>
+                <TasksPage />
               </ProtectedRoute>
             }
           />

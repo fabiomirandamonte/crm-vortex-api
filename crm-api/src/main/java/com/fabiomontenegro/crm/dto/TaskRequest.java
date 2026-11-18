@@ -4,8 +4,6 @@ import java.time.OffsetDateTime;
 import com.fabiomontenegro.crm.model.enums.TaskPriority;
 import com.fabiomontenegro.crm.model.enums.TaskStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,7 +16,6 @@ public record TaskRequest (
     String title,
     String description,
     
-    @FutureOrPresent(message = "A data de vencimento deve ser atual ou futura")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
     OffsetDateTime dueDate,
 
