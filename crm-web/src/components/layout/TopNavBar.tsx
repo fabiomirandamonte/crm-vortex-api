@@ -13,16 +13,16 @@ import {
 import { useAuth } from '../../contexts/AuthContext';
 
 export const TopNavbar: React.FC = () => {
-  const { user, signOut } = useAuth();
+  const { user, isAdmin, signOut } = useAuth();
 
   const navItems = [
-    { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { to: '/customers', label: 'Customers', icon: Users },
-    { to: '/funnel-stages', label: 'Funnel Stages', icon: GitBranch },
-    { to: '/tasks', label: 'Tasks', icon: CheckSquare },
-    { to: '/notes', label: 'Notes', icon: FileText },
-    { to: '/users', label: 'Admin', icon: UserCog },
-  ];
+    { to: '/dashboard', label: 'Painel', icon: LayoutDashboard, adminOnly: false },
+    { to: '/customers', label: 'Clientes', icon: Users, adminOnly: false },
+    { to: '/funnel-stages', label: 'Funil de Vendas', icon: GitBranch, adminOnly: false },
+    { to: '/tasks', label: 'Tarefas', icon: CheckSquare, adminOnly: false },
+    { to: '/notes', label: 'Anotações', icon: FileText, adminOnly: false },
+    { to: '/users', label: 'Administração', icon: UserCog, adminOnly: true },
+  ].filter((item) => !item.adminOnly || isAdmin);
 
   return (
     <header className="w-full bg-[#1b365d] text-white shadow-sm">
@@ -32,12 +32,18 @@ export const TopNavbar: React.FC = () => {
             <ShieldCheck className="w-5 h-5 text-blue-200" />
           </div>
           <span className="font-semibold text-sm sm:text-base tracking-wide">
-            fabiomontenegro CRM API
+            fabiomontenegro CRM
           </span>
         </div>
 
         <div className="flex items-center gap-3 text-xs sm:text-sm">
-          <span className="text-blue-100 hidden sm:inline">{user?.email}</span>
+          <div className="hidden sm:flex items-center gap-2">
+            <span className="text-blue-100">{user?.email}</span>
+            <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-[#2b548e] text-blue-100">
+              {user?.role === 'ADMIN' ? 'Admin' : 'Operador'}
+            </span>
+          </div>
+
           <button
             onClick={signOut}
             className="flex items-center gap-1.5 bg-[#24497a] hover:bg-[#2b548e] px-3 py-1.5 rounded text-xs font-medium transition cursor-pointer"

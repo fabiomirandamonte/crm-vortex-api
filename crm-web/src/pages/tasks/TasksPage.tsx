@@ -23,6 +23,19 @@ import {
   type TaskStatus,
 } from '../../types/crm';
 
+const STATUS_LABELS: Record<TaskStatus, string> = {
+  PENDING: 'Pendente',
+  IN_PROGRESS: 'Em Andamento',
+  COMPLETED: 'Concluída',
+  CANCELED: 'Cancelada',
+};
+
+const PRIORITY_LABELS: Record<TaskPriority, string> = {
+  LOW: 'Baixa',
+  MEDIUM: 'Média',
+  HIGH: 'Alta',
+};
+
 export const TasksPage: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -227,7 +240,7 @@ export const TasksPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <h1 className="text-lg font-bold text-slate-800 tracking-tight">
-              TASK MANAGEMENT
+              GESTÃO DE TAREFAS
             </h1>
             <p className="text-xs text-slate-500">
               Gerencie atividades, prazos e prioridades vinculadas aos clientes
@@ -274,7 +287,7 @@ export const TasksPage: React.FC = () => {
           <section className="lg:col-span-4 bg-white rounded-md shadow-sm border border-slate-200 p-5">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
               <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                {editingId ? `Editando Tarefa #${editingId}` : 'Registration & Editing'}
+                {editingId ? `Editando Tarefa #${editingId}` : 'Cadastro e Edição'}
               </h2>
               {editingId && (
                 <button
@@ -335,9 +348,9 @@ export const TasksPage: React.FC = () => {
                     }
                     className="w-full px-3 py-2 text-xs border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-[#2b548e] text-slate-800 bg-white"
                   >
-                    <option value="LOW">LOW</option>
-                    <option value="MEDIUM">MEDIUM</option>
-                    <option value="HIGH">HIGH</option>
+                    <option value="LOW">{PRIORITY_LABELS.LOW}</option>
+                    <option value="MEDIUM">{PRIORITY_LABELS.MEDIUM}</option>
+                    <option value="HIGH">{PRIORITY_LABELS.HIGH}</option>
                   </select>
                 </div>
 
@@ -352,17 +365,17 @@ export const TasksPage: React.FC = () => {
                     }
                     className="w-full px-3 py-2 text-xs border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-[#2b548e] text-slate-800 bg-white"
                   >
-                    <option value="PENDING">PENDING</option>
-                    <option value="IN_PROGRESS">IN_PROGRESS</option>
-                    <option value="COMPLETED">COMPLETED</option>
-                    <option value="CANCELED">CANCELED</option>
+                    <option value="PENDING">{STATUS_LABELS.PENDING}</option>
+                    <option value="IN_PROGRESS">{STATUS_LABELS.IN_PROGRESS}</option>
+                    <option value="COMPLETED">{STATUS_LABELS.COMPLETED}</option>
+                    <option value="CANCELED">{STATUS_LABELS.CANCELED}</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-slate-600 mb-1">
-                  Prazo (Due Date)
+                  Prazo de Entrega
                 </label>
                 <input
                   type="datetime-local"
@@ -392,7 +405,7 @@ export const TasksPage: React.FC = () => {
                   className="flex-1 bg-[#24497a] hover:bg-[#1b365d] text-white font-semibold text-xs py-2.5 px-4 rounded shadow-sm transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                 >
                   {isSaving && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-                  <span>{editingId ? 'UPDATE' : 'SAVE'}</span>
+                  <span>{editingId ? 'ATUALIZAR' : 'SALVAR'}</span>
                 </button>
 
                 {editingId && (
@@ -401,7 +414,7 @@ export const TasksPage: React.FC = () => {
                     onClick={() => setTaskToDelete({ id: editingId, title: formData.title })}
                     className="bg-red-600 hover:bg-red-700 text-white font-semibold text-xs py-2.5 px-3.5 rounded shadow-sm transition cursor-pointer"
                   >
-                    DELETE
+                    EXCLUIR
                   </button>
                 )}
               </div>
@@ -428,10 +441,10 @@ export const TasksPage: React.FC = () => {
                 className="px-3 py-2 text-xs border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-[#2b548e] text-slate-700 bg-white"
               >
                 <option value="ALL">Todos Status</option>
-                <option value="PENDING">PENDING</option>
-                <option value="IN_PROGRESS">IN_PROGRESS</option>
-                <option value="COMPLETED">COMPLETED</option>
-                <option value="CANCELED">CANCELED</option>
+                <option value="PENDING">{STATUS_LABELS.PENDING}</option>
+                <option value="IN_PROGRESS">{STATUS_LABELS.IN_PROGRESS}</option>
+                <option value="COMPLETED">{STATUS_LABELS.COMPLETED}</option>
+                <option value="CANCELED">{STATUS_LABELS.CANCELED}</option>
               </select>
 
               <select
@@ -440,9 +453,9 @@ export const TasksPage: React.FC = () => {
                 className="px-3 py-2 text-xs border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-[#2b548e] text-slate-700 bg-white"
               >
                 <option value="ALL">Todas Prioridades</option>
-                <option value="HIGH">HIGH</option>
-                <option value="MEDIUM">MEDIUM</option>
-                <option value="LOW">LOW</option>
+                <option value="HIGH">{PRIORITY_LABELS.HIGH}</option>
+                <option value="MEDIUM">{PRIORITY_LABELS.MEDIUM}</option>
+                <option value="LOW">{PRIORITY_LABELS.LOW}</option>
               </select>
             </div>
 
@@ -490,7 +503,7 @@ export const TasksPage: React.FC = () => {
                             )}
                           </td>
 
-                        <td className="py-3 px-3 whitespace-nowrap text-[11px]">
+                          <td className="py-3 px-3 whitespace-nowrap text-[11px]">
                             {task.dueDate ? (
                               (() => {
                                 const overdue = isTaskOverdue(task);
@@ -534,7 +547,7 @@ export const TasksPage: React.FC = () => {
                                 task.priority
                               )}`}
                             >
-                              {task.priority}
+                              {PRIORITY_LABELS[task.priority] ?? task.priority}
                             </span>
                           </td>
 
@@ -544,7 +557,7 @@ export const TasksPage: React.FC = () => {
                                 task.status
                               )}`}
                             >
-                              {task.status}
+                              {STATUS_LABELS[task.status] ?? task.status}
                             </span>
                           </td>
 

@@ -1,3 +1,5 @@
+export type UserRole = 'ADMIN' | 'USER';
+
 export interface LoginRequest {
   email: string;
   password: string;
@@ -8,11 +10,13 @@ export interface AuthResponse {
   type?: string;
   username?: string;
   email?: string;
+  role?: string;
   roles?: string[];
 }
 
 export interface AuthUser {
-  username: string;
+  username?: string;
   email?: string;
   token: string;
+  role: UserRole;
 }

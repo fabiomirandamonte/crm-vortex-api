@@ -171,7 +171,7 @@ export const UsersPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <h1 className="text-lg font-bold text-slate-800 tracking-tight">
-              USER MANAGEMENT (ADMIN)
+              ADMINISTRAÇÃO DE USUÁRIOS
             </h1>
             <p className="text-xs text-slate-500">
               Gerencie operadores internos, credenciais de acesso e níveis de permissão
@@ -218,7 +218,7 @@ export const UsersPage: React.FC = () => {
           <section className="lg:col-span-4 bg-white rounded-md shadow-sm border border-slate-200 p-5">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
               <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                {editingId ? `Editando Usuário #${editingId}` : 'Registration & Editing'}
+                {editingId ? `Editando Usuário #${editingId}` : 'Registrar & Editar'}
               </h2>
               {editingId && (
                 <button
