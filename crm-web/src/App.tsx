@@ -7,6 +7,7 @@ import { FunnelStagesPage } from './pages/funnel/FunnelStagesPage';
 import { TasksPage } from './pages/tasks/TasksPage';
 import { CustomerNotesPage } from './pages/notes/CustomerNotesPage';
 import { UsersPage } from './pages/users/UsersPage';
+import { DashboardPage } from './pages/dashboard/DashboardPage';
 
 export function App() {
   return (
@@ -16,10 +17,10 @@ export function App() {
           <Route path="/login" element={<LoginPage />} />
           
           <Route
-            path="/customers"
+            path="/dashboard"
             element={
               <ProtectedRoute>
-                <CustomersPage />
+                <DashboardPage />
               </ProtectedRoute>
             }
           />+
@@ -60,9 +61,7 @@ export function App() {
             }
           />
           
-          {/* Redireciona /dashboard e qualquer outra rota desconhecida para /customers */}
-          <Route path="/dashboard" element={<Navigate to="/customers" replace />} />
-          <Route path="*" element={<Navigate to="/customers" replace />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

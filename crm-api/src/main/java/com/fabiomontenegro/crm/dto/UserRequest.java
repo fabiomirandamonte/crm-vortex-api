@@ -1,6 +1,6 @@
 package com.fabiomontenegro.crm.dto;
 
-import com.fabiomontenegro.crm.model.Role; // Ajuste o pacote do enum Role se necessário
+ // Ajuste o pacote do enum Role se necessário
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

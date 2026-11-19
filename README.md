@@ -112,6 +112,7 @@ A interface web estará disponível em `http://localhost:5173`.
 - [x] Layout base com navegação modular (`TopNavBar`)
 - [x] Interface de Gestão de Clientes (`CustomersPage`): listagem, busca/filtros dinâmicos, cadastro, edição, exclusão e atualização inline de estágio do funil (`PATCH /api/v1/customers/{id}/funnel-stage`)
 - [x] Interface de gerenciamento de Estágios do Funil (`Funnel Stages UI`)
-- [ ] Interface de Tarefas (`Tasks UI`)
-- [ ] Interface de Histórico e Anotações (`Notes UI`)
-- [ ] Painel Administrativo (`Admin UI`) e Dashboard de indicadores
+- [x] Interface de Tarefas (`Tasks UI`): listagem, filtros por status/prioridade e CRUD completo vinculado a clientes
+- [x] Interface de Histórico e Anotações (`Notes UI`): linha do tempo de interações e anotações por cliente
+- [x] Painel Administrativo (`Admin UI`): gerenciamento de usuários internos, credenciais e perfis de acesso (`ADMIN` / `USER`)
+- [x] Dashboard de indicadores (visão consolidada do pipeline e tarefas)
