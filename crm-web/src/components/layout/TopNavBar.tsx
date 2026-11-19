@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
   ShieldCheck,
+  LayoutDashboard,
   Users,
   GitBranch,
   CheckSquare,
@@ -15,6 +16,7 @@ export const TopNavbar: React.FC = () => {
   const { user, signOut } = useAuth();
 
   const navItems = [
+    { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { to: '/customers', label: 'Customers', icon: Users },
     { to: '/funnel-stages', label: 'Funnel Stages', icon: GitBranch },
     { to: '/tasks', label: 'Tasks', icon: CheckSquare },
@@ -25,7 +27,6 @@ export const TopNavbar: React.FC = () => {
   return (
     <header className="w-full bg-[#1b365d] text-white shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-4">
-        {/* Logo / Brand */}
         <div className="flex items-center gap-3">
           <div className="bg-[#2b548e] p-1.5 rounded flex items-center justify-center">
             <ShieldCheck className="w-5 h-5 text-blue-200" />
@@ -35,7 +36,6 @@ export const TopNavbar: React.FC = () => {
           </span>
         </div>
 
-        {/* Usuário Logado e Logout */}
         <div className="flex items-center gap-3 text-xs sm:text-sm">
           <span className="text-blue-100 hidden sm:inline">{user?.email}</span>
           <button
@@ -48,7 +48,6 @@ export const TopNavbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Sub-barra de Navegação dos Módulos */}
       <nav className="bg-[#152a4a] border-t border-[#264673]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center gap-1 overflow-x-auto">
           {navItems.map(({ to, label, icon: Icon }) => (
