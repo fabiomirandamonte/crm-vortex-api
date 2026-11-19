@@ -26,6 +26,15 @@ export function App() {
           />+
 
           <Route
+            path="/customers"
+            element={
+              <ProtectedRoute>
+                <CustomersPage />
+              </ProtectedRoute>
+            }
+          />
+          
+          <Route
             path="/funnel-stages"
             element={
               <ProtectedRoute>
@@ -60,7 +69,7 @@ export function App() {
               </ProtectedRoute>
             }
           />
-          
+     
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </BrowserRouter>

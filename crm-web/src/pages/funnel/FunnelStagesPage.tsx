@@ -136,10 +136,10 @@ export const FunnelStagesPage: React.FC = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-lg font-bold text-slate-800 tracking-tight">
-              FUNNEL STAGES MANAGEMENT
+              GESTÃO DO FUNIL DE VENDAS
             </h1>
             <p className="text-xs text-slate-500">
-              Acompanhe o pipeline visual e gerencie a ordem das etapas de vendas
+              Acompanhe visualmente o andamento das negociações e gerencie a ordem das etapas de vendas
             </p>
           </div>
 
@@ -180,7 +180,7 @@ export const FunnelStagesPage: React.FC = () => {
         {/* Seção Superior: Pipeline Visual (Kanban por Estágio) */}
         <section className="bg-white rounded-md shadow-sm border border-slate-200 p-5">
           <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700 border-b border-slate-100 pb-3 mb-4">
-            Funnel Pipeline Board
+            Quadro do Funil de Vendas
           </h2>
 
           {isLoading ? (
@@ -286,7 +286,7 @@ export const FunnelStagesPage: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <div>
                 <label className="block text-xs font-semibold text-slate-600 mb-1">
-                  Nome da Etapa *
+                  Nome da Etapa
                 </label>
                 <input
                   type="text"
@@ -300,7 +300,7 @@ export const FunnelStagesPage: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-semibold text-slate-600 mb-1">
-                  Ordem no Funil (`stageOrder`) *
+                  Ordem no Funil
                 </label>
                 <input
                   type="number"
@@ -328,7 +328,7 @@ export const FunnelStagesPage: React.FC = () => {
           {/* Tabela de Estágios */}
           <section className="lg:col-span-8 bg-white rounded-md shadow-sm border border-slate-200 p-5">
             <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700 border-b border-slate-100 pb-3 mb-4">
-              Stages List (Ordenado por `stageOrder`)
+              Lista de Etapas
             </h2>
 
             <div className="overflow-x-auto">

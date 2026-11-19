@@ -6,16 +6,18 @@ import com.fabiomontenegro.crm.security.JwtTokenProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
+
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
 
-    public AuthService(AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider){
+    public AuthService(AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider) {
         this.authenticationManager = authenticationManager;
-          this.tokenProvider = tokenProvider;
+        this.tokenProvider = tokenProvider;
     }
 
     public TokenResponse authenticateUser(LoginRequest loginRequest) {
@@ -26,8 +28,17 @@ public class AuthService {
                 )
         );
 
-        String jwt = tokenProvider.generateToken(authentication);
-        return new TokenResponse(jwt, tokenProvider.getExpirationMs());
+        String role = extractRole(authentication);
+        String jwt = tokenProvider.generateToken(authentication, role);
+
+        return new TokenResponse(jwt, tokenProvider.getExpirationMs(), role);
     }
-    
+
+    private String extractRole(Authentication authentication) {
+        return authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .map(authority -> authority.startsWith("ROLE_") ? authority.substring(5) : authority)
+                .findFirst()
+                .orElse("USER");
+    }
 }

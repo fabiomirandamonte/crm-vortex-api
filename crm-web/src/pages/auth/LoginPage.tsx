@@ -52,10 +52,10 @@ export const LoginPage: React.FC = () => {
         <div className="w-full max-w-[380px] bg-white rounded-md shadow-md border border-slate-200 p-8">
           <div className="text-center mb-6">
             <h1 className="text-lg font-semibold text-slate-700">
-              Authenticating...
+              Autenticação...
             </h1>
             <p className="text-xs text-slate-400 mt-1">
-              Enter your credentials to access the CRM workspace
+              Insira suas credenciais para acessar o painel do CRM
             </p>
           </div>
 
@@ -72,14 +72,14 @@ export const LoginPage: React.FC = () => {
                 htmlFor="email"
                 className="block text-xs font-semibold text-slate-600 mb-1"
               >
-                Email
+                Login
               </label>
               <input
                 id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="Email"
+                placeholder="Digite seu e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={isSubmitting}
@@ -92,14 +92,14 @@ export const LoginPage: React.FC = () => {
                 htmlFor="password"
                 className="block text-xs font-semibold text-slate-600 mb-1"
               >
-                Password
+                Senha
               </label>
               <input
                 id="password"
                 name="password"
                 type="password"
                 autoComplete="current-password"
-                placeholder="Password"
+                placeholder="Digite sua senha"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={isSubmitting}
@@ -115,10 +115,10 @@ export const LoginPage: React.FC = () => {
               {isSubmitting ? (
                 <>
                   <Loader2 className="w-4 h-4 animate-spin" />
-                  <span>Authenticating...</span>
+                  <span>Autenticando...</span>
                 </>
               ) : (
-                <span>Login</span>
+                <span>Entrar</span>
               )}
             </button>
           </form>
@@ -131,7 +131,7 @@ export const LoginPage: React.FC = () => {
               }
               className="text-xs text-slate-500 hover:text-[#24497a] transition cursor-pointer"
             >
-              Forgot Password
+              Esqueci minha senha
             </button>
           </div>
         </div>

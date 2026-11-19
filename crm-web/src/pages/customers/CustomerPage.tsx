@@ -175,7 +175,7 @@ const handleStageChange = async (customerId: number, newStageId: number) => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div>
             <h1 className="text-lg font-bold text-slate-800 tracking-tight">
-              CUSTOMER LIST & SEARCH
+              GESTÃO DE CLIENTES
             </h1>
             <p className="text-xs text-slate-500">
               Gerencie cadastros, pesquise contatos e atualize etapas do pipeline
@@ -222,7 +222,7 @@ const handleStageChange = async (customerId: number, newStageId: number) => {
           <section className="lg:col-span-4 bg-white rounded-md shadow-sm border border-slate-200 p-5">
             <div className="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
               <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                {editingId ? `Editando Cliente #${editingId}` : 'Registration & Editing'}
+                {editingId ? `Editando Cliente #${editingId}` : 'Cadastrar & Editar'}
               </h2>
               {editingId && (
                 <button
@@ -294,7 +294,7 @@ const handleStageChange = async (customerId: number, newStageId: number) => {
 
               <div>
                 <label className="block text-xs font-semibold text-slate-600 mb-1">
-                  Estágio do Funil (Funnel Stage)
+                  Estágio do Funil
                 </label>
                 <select
                   value={formData.funnelStageId}
@@ -318,7 +318,7 @@ const handleStageChange = async (customerId: number, newStageId: number) => {
                   className="flex-1 bg-[#24497a] hover:bg-[#1b365d] text-white font-semibold text-xs py-2.5 px-4 rounded shadow-sm transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
                 >
                   {isSaving && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-                  <span>{editingId ? 'UPDATE' : 'SAVE'}</span>
+                  <span>{editingId ? 'ATUALIZAR' : 'SALVAR'}</span>
                 </button>
 
                 {editingId && (
@@ -327,7 +327,7 @@ const handleStageChange = async (customerId: number, newStageId: number) => {
                     onClick={() => handleDelete(editingId, formData.name)}
                     className="bg-red-600 hover:bg-red-700 text-white font-semibold text-xs py-2.5 px-3.5 rounded shadow-sm transition cursor-pointer"
                   >
-                    DELETE
+                    EXCLUIR
                   </button>
                 )}
               </div>
@@ -380,7 +380,7 @@ const handleStageChange = async (customerId: number, newStageId: number) => {
                     <tr className="border-b border-slate-200 text-[11px] font-bold uppercase text-slate-500 bg-slate-50">
                       <th className="py-2.5 px-3">Nome / Empresa</th>
                       <th className="py-2.5 px-3">Contato</th>
-                      <th className="py-2.5 px-3">Funnel Stage</th>
+                      <th className="py-2.5 px-3">Estágio do Funil</th>
                       <th className="py-2.5 px-3 text-right">Ações</th>
                     </tr>
                   </thead>

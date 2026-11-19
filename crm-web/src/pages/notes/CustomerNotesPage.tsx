@@ -149,7 +149,7 @@ export const CustomerNotesPage: React.FC = () => {
         {/* Cabeçalho */}
         <div className="mb-6">
           <h1 className="text-lg font-bold text-slate-800 tracking-tight">
-            CUSTOMER NOTES MANAGEMENT
+            ANOTAÇÕES DE CLIENTES
           </h1>
           <p className="text-xs text-slate-500">
             Histórico de interações, reuniões e anotações comerciais por cliente
@@ -290,7 +290,7 @@ export const CustomerNotesPage: React.FC = () => {
                     className="bg-[#24497a] hover:bg-[#1b365d] text-white font-semibold text-xs py-2 px-5 rounded shadow-sm transition flex items-center gap-2 cursor-pointer disabled:opacity-60"
                   >
                     {isSaving && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-                    <span>{editingNoteId ? 'UPDATE NOTE' : 'SAVE NOTE'}</span>
+                    <span>{editingNoteId ? 'ATUALIZAR NOTA' : 'SALVAR NOTA'}</span>
                   </button>
                 </div>
               </form>
