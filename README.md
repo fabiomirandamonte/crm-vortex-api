@@ -63,37 +63,73 @@ A API utiliza uma arquitetura de segurança **Stateless** implementada com **Spr
 
 ## ⚙️ Como Executar o Projeto Localmente
 
-### Pré-requisitos
-- **Java 21** instalado
-- **Node.js 18+** e **npm** instalados
-- **Docker e Docker Compose** instalados (ou PostgreSQL local na porta `5432`)
-- **Maven** (ou utilizar o wrapper `./mvnw`)
+# Opção 1: Execução Completa via Docker Compose (Recomendado)
 
-### 1. Subir o Banco de Dados
-Na raiz do repositório (`crm-vortex/`):
-```bash
-docker-compose up -d
+Sobe o banco de dados PostgreSQL 16 (com healthcheck), o backend Spring Boot (`crm-api`) e o frontend React + Nginx (`crm-web`) na mesma rede Docker:
+
+```
+    docker compose up --build -d
 ```
 
-### 2. Executar o Backend (`crm-api`)
-```bash
-cd crm-api
-./mvnw spring-boot:run
-```
-A API estará disponível em `http://localhost:8080/api/v1`.
+* Frontend (Nginx): http://localhost:5173
+* Backend API: http://localhost:8080/api/v1
+* PostgreSQL: localhost:5432 (banco crm_db, volume persistente pgdata)
 
-### 3. Executar o Frontend (`crm-web`)
+Para acompanhar os logs e encerrar os containers:
+
+```
+    docker compose logs -f
+    docker compose down
+```
+
+Principais Variáveis de Ambiente (docker-compose.yml / application.yml)
+
+* DB_URL, DB_USERNAME, DB_PASSWORD: Conexão JDBC do Spring Boot com o PostgreSQL.
+* APP_JWT_SECRET, APP_JWT_EXPIRATION_MS: Chave de assinatura HMAC e tempo de expiração do JWT.
+* APP_CORS_ALLOWED_ORIGINS: Origens permitidas no CORS (ex.: http://localhost:5173).
+* VITE_API_URL: URL base da API usada no build do frontend (padrão /api/v1 no Docker via proxy do Nginx).
+
+<br>
+<br>
+
+# Opção 2: Execução Local (Desenvolvimento)
+
+Pré-requisitos
+
+* Java 21 instalado
+* Node.js 18+ e npm instalados
+* Docker e Docker Compose instalados (ou PostgreSQL local na porta 5432)
+* Maven (ou utilizar o wrapper ./mvnw)
+
+1. Subir o Banco de Dados
+
+Na raiz do repositório (crm-vortex/):
+
+        docker compose up -d postgres
+
+
+2. Executar o Backend (crm-api)
+
+```
+    cd crm-api
+    ./mvnw spring-boot:run
+```
+
+A API estará disponível em http://localhost:8080/api/v1.
+
+3. Executar o Frontend (crm-web)
+
 Em outro terminal, a partir da raiz do projeto:
-```bash
-cd crm-web
-npm install
-npm run dev
-```
-A interface web estará disponível em `http://localhost:5173`.
+
+    cd crm-web
+    npm install
+    npm run dev
+
+A interface web estará disponível em http://localhost:5173.
 
 ---
 
-## 📌 Status do Projeto (Atualizado em: 16/11/2026)
+## 📌 Status do Projeto (Atualizado em: 24/11/2026)
 
 ### Backend (`crm-api`)
 - [x] Modelagem do Banco de Dados (DER)
