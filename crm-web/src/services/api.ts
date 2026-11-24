@@ -23,6 +23,8 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('@crm:token');
+      localStorage.removeItem('@crm:email');
+      localStorage.removeItem('@crm:role');
       localStorage.removeItem('@crm:username');
       if (window.location.pathname !== '/login') {
         window.location.href = '/login';
