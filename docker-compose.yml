@@ -1,17 +1,59 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:16-alpine
     container_name: crm_postgres
     environment:
-      POSTGRES_DB: crm_db
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: ${POSTGRES_DB:-crm_db}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgrespassword}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-crm_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - crm_network
+
+  crm-api:
+    build:
+      context: ./crm-api
+      dockerfile: Dockerfile
+    container_name: crm_api
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-crm_db}
+      DB_USERNAME: ${POSTGRES_USER:-postgres}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-postgrespassword}
+      APP_JWT_SECRET: ${APP_JWT_SECRET:-9a2f8c4e1b7d5a3f6e8c2b4a1f9e3d7c5b8a0e2f4c6d8b1a3e5f7c9d0b2a4e6f}
+      APP_JWT_EXPIRATION_MS: ${APP_JWT_EXPIRATION_MS:-86400000}
+    ports:
+      - "${API_PORT:-8080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - crm_network
+
+  crm-web:
+    build:
+      context: ./crm-web
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-/api/v1}
+    container_name: crm_web
+    ports:
+      - "${WEB_PORT:-5173}:80"
+    depends_on:
+      - crm-api
+    networks:
+      - crm_network
 
 volumes:
   pgdata:
+
+networks:
+  crm_network:
+    driver: bridge
